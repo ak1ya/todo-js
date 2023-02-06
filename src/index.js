@@ -4,7 +4,7 @@ const onClickAdd = () => {
   // テキストボックスの値を取得し、初期化する
   const inputText = document.getElementById("add-text").value;
   document.getElementById("add-text").value = "";
-  //alert(inputText);
+
   createIncompleteList(inputText);
 };
 
@@ -18,17 +18,14 @@ const createIncompleteList = (text) => {
   // li生成
   const li = document.createElement("li");
   li.className = "li-parent";
-  //console.log(li);
 
   // div生成
   const div = document.createElement("div");
   div.className = "list-row";
-  //console.log(div);
 
   // p生成
   const p = document.createElement("p");
   p.innerText = text;
-  //console.log(p);
 
   // button(完了)タグ生成
   const completeButton = document.createElement("button");
@@ -60,17 +57,10 @@ const createIncompleteList = (text) => {
     backButton.addEventListener("click", () => {
       // 押された戻すボタンの祖先タグ(li)を完了リストから削除
       const deleteTarget = backButton.closest(".li-parent");
-      const aa = document
-        .getElementById("complete-list")
-        .removeChild(deleteTarget);
-      console.log("oooooo");
-      console.log(aa);
+      document.getElementById("complete-list").removeChild(deleteTarget);
 
       // テキスト取得
       const text = deleteTarget.querySelector("p").innerText;
-
-      console.log("oooooio");
-      console.log(text);
 
       // 未完了リストへ
       createIncompleteList(text);
